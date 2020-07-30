@@ -31,6 +31,7 @@ private
 #def post_params
 #  params.require(:post).permit(:title, :description)
 #end
+# pass permitted fields in as *args -> post_params dry -> 
 def post_params(*args)
   params.require(:post).permit(*args)
 end
