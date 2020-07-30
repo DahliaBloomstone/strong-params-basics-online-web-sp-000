@@ -28,8 +28,11 @@ end
 private
 
 #abstract the strong parameter call into its own method controller
-def post_params
-  params.require(:post).permit(:title, :description)
+#def post_params
+#  params.require(:post).permit(:title, :description)
+#end
+def post_params(*args)
+  params.require(:post).permit(*args)
 end
 
 	def edit
