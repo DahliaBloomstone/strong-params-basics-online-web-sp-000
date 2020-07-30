@@ -11,6 +11,10 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 
+	def edit
+	  @post = Post.find(params[:id])
+	end
+
 #only title is permittable using permit method
 #permit vs. require? require = restrictive. params must contain post key
 def create
