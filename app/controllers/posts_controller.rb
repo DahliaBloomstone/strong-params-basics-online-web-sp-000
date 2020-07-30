@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 
-#only title is permittable 
+#only title is permittable using permit method
 def create
  @post = Post.new(params.require(:post).permit(:title, :description))
  @post.save
