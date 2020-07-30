@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 	end
 
 #only title is permittable using permit method
+#permit vs. require? require = restrictive. params must contain post key 
 def create
  @post = Post.new(params.require(:post).permit(:title, :description))
  @post.save
