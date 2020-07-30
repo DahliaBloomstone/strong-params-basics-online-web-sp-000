@@ -12,17 +12,23 @@ class PostsController < ApplicationController
 	end
 
 #only title is permittable using permit method
-#permit vs. require? require = restrictive. params must contain post key 
+#permit vs. require? require = restrictive. params must contain post key
 def create
- @post = Post.new(params.require(:post).permit(:title, :description))
- @post.save
- redirect_to post_path(@post)
+  @post = Post.new(post_params)
+  @post.save
+  redirect_to post_path(@post)
 end
 
 def update
- @post = Post.find(params[:id])
- @post.update(params.require(:post).permit(:title))
- redirect_to post_path(@post)
+  @post = Post.find(params[:id])
+  @post.update(post_params)
+  redirect_to post_path(@post)
+end
+
+private
+
+def post_params
+  params.require(:post).permit(:title, :description)
 end
 
 	def edit
